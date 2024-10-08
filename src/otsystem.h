@@ -31,13 +31,13 @@
 #include <winsock2.h>
 #include <stddef.h>
 #include <stdlib.h>
-#include <sys/timeb.h>
+#include <sys/time.h>
 
 inline int64_t OTSYS_TIME()
 {
-  _timeb t;
-  _ftime(&t);
-  return ((int64_t)t.millitm) + ((int64_t)t.time) * 1000;
+  timeval tv;
+  gettimeofday(&tv, NULL);
+  return ((int64_t)tv.tv_usec) + ((int64_t)tv.tv_sec) * 1000;
 }
 
 typedef int socklen_t;
@@ -47,7 +47,7 @@ typedef int socklen_t;
 #include <stdint.h>
 #include <time.h>
 #include <sys/types.h>
-#include <sys/timeb.h>
+#include <sys/time.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -56,9 +56,9 @@ typedef int socklen_t;
 
 inline int64_t OTSYS_TIME()
 {
-  timeb t;
-  ftime(&t);
-  return ((int64_t)t.millitm) + ((int64_t)t.time) * 1000;
+  timeval tv;
+  gettimeofday(&tv, NULL);
+  return ((int64_t)tv.tv_usec) + ((int64_t)tv.tv_sec) * 1000;
 }
 
 #ifndef SOCKET

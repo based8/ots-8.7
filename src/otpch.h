@@ -28,7 +28,7 @@
 #include <boost/config.hpp>
 #include "boost_common.h"
 #include <boost/any.hpp>
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <boost/function.hpp>
 #include <boost/tokenizer.hpp>
 #include <boost/regex.hpp>
